@@ -21,7 +21,8 @@ void BBTree::insert(const int insertVal) {
 
 void BBTree::remove(const int removeVal) {
     if (root != nullptr) {
-        root->remove(removeVal, alpha);
+        Node *pNode = root->remove(removeVal, alpha);
+        delete (pNode);
     }
 }
 
@@ -68,19 +69,19 @@ BBTree::Node *BBTree::Node::remove(const int removeVal, const double alpha) {
     if (removeVal < key) {
         if (left != nullptr) {
             if (left->key == removeVal) {
+                returnNode = left;
                 if (left->left == nullptr && left->right == nullptr) {
-                    returnNode = left;
                     left = nullptr;
                 } else {
-                    // TODO left und right von kindknoten umbiegen
+
                 }
             }
         }
     } else if (removeVal > key) {
         if (right != nullptr) {
             if (right->key == removeVal) {
+                returnNode = right;
                 if (right->left == nullptr && right->right == nullptr) {
-                    returnNode = right;
                     right = nullptr;
                 } else {
                     // TODO left und right von kindknoten umbiegen
