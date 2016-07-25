@@ -15,6 +15,13 @@ private:
         bool search(const int) const;
         Node *insert(const int, const double);
         Node *remove(const int, const double);
+        double calcChildBalance(Node* child);
+        void reBalance(const double);
+
+        void rotateLeft(Node** root);
+        void rotateRight(Node** root);
+        void rotateLeftRight(Node** node);
+        void rotateRightLeft(Node** node);
     };
 
     const double alpha;
